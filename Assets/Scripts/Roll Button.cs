@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RollButton : MonoBehaviour
 {
-
+    public GameObject pipPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,7 +15,10 @@ public class RollButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Mouse.current.leftButton.wasPressedThisFrame == true)
+        {
+            getDie();
+        }
     }
 
     public int setDie()
@@ -28,7 +33,7 @@ public class RollButton : MonoBehaviour
         int roll = setDie();
         if(roll == 1)
         {
-            
+            Instantiate(pipPrefab);
         }
     }
 }
